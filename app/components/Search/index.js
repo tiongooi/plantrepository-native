@@ -16,8 +16,9 @@ import SearchCard from '../SearchCard'
 export default class Search extends Component {
 
   componentWillUpdate(nextProps) {
+    console.log('component is updated')
     const { searchValue, searchResults, queryDatabase } = nextProps
-    if (searchResults[searchValue.charAt(0)])  return
+    if (searchResults[searchValue.charAt(0)]) return
      else {
       if (searchValue.length === 1) queryDatabase(searchValue, searchResults)
        else return
@@ -28,8 +29,19 @@ export default class Search extends Component {
     this.props.updateSearch(v)
   }
 
+  filterResult(result, searchValue) {
+    return result.botanicalName.indexOf(searchValue) !== -1 ||
+           result.family.indexOf(searchValue) !== -1 ||
+           result.commonName.indexOf(searchValue) !== -1
+  }
+
   render() {
+    let filteredResults = []
     let { handleHideSearch, searchValue, searchResults, isFetching } = this.props
+    if (!!searchResults[searchValue.charAt(0)]) {
+      filteredResults = searchResults[searchValue.charAt(0)].filter(r => this.filterResult(r, searchValue))
+    }
+    // let filteredResults = searchResults[searchValue]
     return(
       <View>
         <Toolbar
@@ -56,7 +68,7 @@ export default class Search extends Component {
                        !!searchResults[searchValue.charAt(0)] && searchResults[searchValue.charAt(0)].length > 0 ? (
                          <View>
                            {
-                             searchResults[searchValue.charAt(0)].map((result, index) => <SearchCard result={result} key={index} />)
+                             filteredResults.length && filteredResults.map((result, index) => <SearchCard result={result} key={index} />)
                            }
                          </View>
                        ):(<Text>not found</Text>)
