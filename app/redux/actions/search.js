@@ -5,21 +5,25 @@ export const QUERY_SUCCESS = 'QUERY_SUCCESS'
 export const QUERY_FAIL = 'QUERY_FAIL'
 
 export const updateSearch = (v) => dispatch => {
-  dispatch({ type: UPDATE_SEARCH, payload: v })
+  dispatch({ type: UPDATE_SEARCH, payload: v.trim() })
 }
 
-export const queryDatabase = (v) => dispatch => {
-  //check if v is whitespace
+export const queryDatabase = (v, searchResults) => dispatch => {
+  //check if v is whitespace, check if v already exist
   if ( !v.trim() ) return
+  if ( searchResults[v] ) return
+
   dispatch({ type: QUERY })
   //api.get
-  let q1 = query('commonName', v)
-  let q2 = query('family', v)
-  let q3 = query('botanicalName', v)
-  Promise.all([ q1, q2, q3 ])
-    .then(results =>
-      dispatch({ type: QUERY_SUCCESS, payload: results.reduce((acc, cur) => acc.concat(cur)) }))
+  let queries = [ query('commonName', v), query('family', v), query('botanicalName', v) ]
+
+  Promise.all(queries)
+    .then(results => {
+      searchResults[v] = results.reduce((acc, cur) => acc.concat(cur))
+      dispatch({ type: QUERY_SUCCESS, payload: searchResults })
+    })
 }
+
 
 async function query(node, start) {
   let resultInArray

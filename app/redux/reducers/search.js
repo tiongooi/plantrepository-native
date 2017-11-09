@@ -8,7 +8,7 @@ import {
 const initialState = {
   value: '',
   isFetching: false,
-  results: [],
+  results: {},
 }
 
 const searchReducer = (state = initialState, action) => {
