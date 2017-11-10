@@ -31,7 +31,7 @@ export default class Home extends Component {
       <View>
         {
           this.state.showSearch ? (
-            <Search handleHideSearch={this.hideSearch} />
+            <Search handleHideSearch={this.hideSearch} navigation={this.props.navigation} />
           ):(
             <View>
               <Toolbar />

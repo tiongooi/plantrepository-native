@@ -14,6 +14,10 @@ import SearchCard from '../SearchCard'
   queryDatabase,
 })
 export default class Search extends Component {
+  constructor(props) {
+    super(props)
+    this.handleGetPlant = this.handleGetPlant.bind(this)
+  }
 
   componentWillUpdate(nextProps) {
     console.log('component is updated')
@@ -35,13 +39,18 @@ export default class Search extends Component {
            result.commonName.indexOf(searchValue) !== -1
   }
 
+  handleGetPlant(id) {
+    this.props.navigation.navigate('Plant', { id: id })
+  }
+
   render() {
+
     let filteredResults = []
     let { handleHideSearch, searchValue, searchResults, isFetching } = this.props
     if (!!searchResults[searchValue.charAt(0)]) {
       filteredResults = searchResults[searchValue.charAt(0)].filter(r => this.filterResult(r, searchValue))
     }
-    // let filteredResults = searchResults[searchValue]
+
     return(
       <View>
         <Toolbar
@@ -65,10 +74,10 @@ export default class Search extends Component {
                  ):(
                    <View>
                      {
-                       !!searchResults[searchValue.charAt(0)] && searchResults[searchValue.charAt(0)].length > 0 ? (
+                       !!searchResults[searchValue.charAt(0)] && searchResults[searchValue.charAt(0)].length > 0 && filteredResults.length > 0 ? (
                          <View>
                            {
-                             filteredResults.length && filteredResults.map((result, index) => <SearchCard result={result} key={index} />)
+                             filteredResults.map((result, index) => <SearchCard result={result} key={index} getPlant={this.handleGetPlant} />)
                            }
                          </View>
                        ):(<Text>not found</Text>)
