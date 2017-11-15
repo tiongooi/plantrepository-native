@@ -43,7 +43,7 @@ const uiTheme = {
     },
     button: {
       container: {
-        width: 250,
+        // width: 250,
         height: 50,
       },
     },

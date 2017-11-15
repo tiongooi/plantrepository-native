@@ -53,7 +53,7 @@ export default class Search extends Component {
 
     return(
       <View>
-        <Toolbar
+        {/* <Toolbar
           isSearchActive={true}
           // centerElement='Searchable'
           searchable={{
@@ -63,7 +63,7 @@ export default class Search extends Component {
             onSearchClosed: handleHideSearch,
             onSearchPressed: ()=> alert('gello'),
           }}
-         />
+         /> */}
          {
            searchValue.length ? (
              <View>
