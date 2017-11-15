@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { View, Text } from 'react-native'
 import { ActionButton, Toolbar, Button } from 'react-native-material-ui'
 import Search from '../Search'
+import styles from './styles'
 
 @connect(store => ({
   test: store
@@ -28,15 +29,23 @@ export default class Home extends Component {
 
   render() {
     return(
-      <View>
+      <View style={styles.container} >
+        {
+          !this.state.showSearch && <Toolbar
+            leftElement='menu'
+            centerElement='Plant Repository'
+          />
+        }
         {
           this.state.showSearch ? (
             <Search handleHideSearch={this.hideSearch} navigation={this.props.navigation} />
           ):(
-            <View>
-              <Toolbar />
-              <Button onPress={() => this.showSearch()} raised primary text='Search' />
-              <Button accent text='Criteria' onPress={()=>alert('hello')}/>
+            <View style={styles.content}>
+              <View>
+                <Button onPress={() => this.showSearch()} raised primary text='Search' />
+                <Button accent text='Criteria' onPress={()=>alert('hello')}/>
+              </View>
+              <View />
             </View>
           )
         }

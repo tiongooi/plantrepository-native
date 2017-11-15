@@ -39,8 +39,8 @@ export default class Search extends Component {
            result.commonName.indexOf(searchValue) !== -1
   }
 
-  handleGetPlant(id) {
-    this.props.navigation.navigate('Plant', { id: id })
+  handleGetPlant(plant) {
+    this.props.navigation.navigate('Plant', { plant: plant })
   }
 
   render() {
@@ -54,7 +54,6 @@ export default class Search extends Component {
     return(
       <View>
         <Toolbar
-          leftElement='menu'
           isSearchActive={true}
           // centerElement='Searchable'
           searchable={{

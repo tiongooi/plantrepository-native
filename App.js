@@ -36,4 +36,15 @@ const uiTheme = {
         primaryColor: COLOR.green500,
     },
     fontFamily: 'roboto-light',
+    toolbar: {
+      container: {
+        width: '100%',
+      },
+    },
+    button: {
+      container: {
+        width: 250,
+        height: 50,
+      },
+    },
 }

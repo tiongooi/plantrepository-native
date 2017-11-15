@@ -1,48 +1,56 @@
 import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
-import { getPlantData, clearData } from '../../redux/actions/plant'
-import Content from '../Content'
+import { BottomNavigation } from 'react-native-material-ui'
+import { clearPlant } from '../../redux/actions/plant'
+import PlantImage from '../PlantImage'
+import PlantData from '../PlantData'
+import styles from './styles'
 
 @connect(store => ({
-  isFetching: store.plant.isFetching,
-  plant: store.plant.data,
+  store,
 }), {
-  getPlantData,
-  clearData,
+  clearPlant,
 })
 export default class Plant extends Component {
-
-  componentDidMount() {
-
+  constructor(props) {
+    super(props)
+    this.state = {
+      active: 'plantData',
+    }
   }
 
-  componentWillMount() {
-    this.props.clearData()
-    this.props.getPlantData(this.props.navigation.state.params.id)
+  componentWillUnmount() {
+    this.props.clearPlant()
   }
 
   render() {
-    let { commonName, botanicalName, family, curatedData } = this.props.plant
+    const { id, botanicalName, commonName, family } = this.props.navigation.state.params.plant
     return(
-      <View>
+      <View style={styles.container}>
         {
-          this.props.isFetching ? (
-            <Text>Loading....</Text>
+          this.state.active === 'plantData' ? (
+            <PlantData id={id} />
           ):(
-            <View>
-              <Text>{commonName}</Text>
-              <Text>{botanicalName}</Text>
-              <Text>{family}</Text>
-              <Text>Curated Information: </Text>
-              {
-                curatedData && Object.keys(curatedData).map((p, index) => {
-                  return <Content icon={null} title={p} content={curatedData[p]} key={index} />
-                })
-              }
-            </View>
+            <PlantImage queryString={`${botanicalName}`} />
           )
         }
+        <View>
+          <BottomNavigation>
+            <BottomNavigation.Action
+              key='info'
+              label='Info'
+              icon='Today'
+              onPress={() => this.setState({ active: 'plantData' })}
+            />
+             <BottomNavigation.Action
+               key='image'
+               label='Image'
+               icon='Today'
+               onPress={() => this.setState({ active: 'plantImage' })}
+             />
+          </BottomNavigation>
+        </View>
       </View>
     )
   }

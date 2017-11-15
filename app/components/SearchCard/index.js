@@ -5,7 +5,7 @@ import { Text, StyleSheet } from 'react-native'
 const SearchCard = (props) => {
   const { botanicalName, commonName, family, id } = props.result
   return(
-    <Card style={{ container: styles.card }} onPress={() => props.getPlant(id)}>
+    <Card style={{ container: styles.card }} onPress={() => props.getPlant(props.result)}>
       <Text style={styles.botanical}>{botanicalName}</Text>
       <Text style={styles.common}>{commonName}</Text>
       <Text style={styles.family}>{family}</Text>

@@ -1,15 +1,15 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 
-const Content = (props) => {
+const SubContent = (props) => {
   const { title, content, icon } = props
   return(
     <View>
+      <Text>{icon}</Text>
       <Text>{title}</Text>
       <Text>{content}</Text>
-      <Text>{icon}</Text>
     </View>
   )
 }
 
-export default Content
+export default SubContent
