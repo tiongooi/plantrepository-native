@@ -52,18 +52,7 @@ export default class Search extends Component {
     }
 
     return(
-      <View>
-        {/* <Toolbar
-          isSearchActive={true}
-          // centerElement='Searchable'
-          searchable={{
-            autoFocus: true,
-            placeholder: 'Search',
-            onChangeText: (v) => this.handleUpdateSearch(v.trim().toLowerCase()),
-            onSearchClosed: handleHideSearch,
-            onSearchPressed: ()=> alert('gello'),
-          }}
-         /> */}
+      <View style={{flex:1}}>
          {
            searchValue.length ? (
              <View>

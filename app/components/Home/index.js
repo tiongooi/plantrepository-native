@@ -37,7 +37,6 @@ export default class Home extends Component {
   }
 
   handlePress() {
-    console.log('hello')
     this.setState({ showCriteria: false })
   }
 
@@ -45,19 +44,19 @@ export default class Home extends Component {
     return(
       <View style={styles.container} >
         <Toolbar
-          // leftElement='menu'
-          centerElement='Plant Repository'
+          leftElement='menu'
+          // centerElement='           Respository'
           isSearchActive={this.state.showSearch}
           searchable={{
             autoFocus: true,
-            // placeholder: 'Search',
+            placeholder: 'Search',
             onChangeText: (v) => this.handleUpdateSearch(v.trim().toLowerCase()),
             onSearchClosed: this.hideSearch,
             onSearchPressed: this.showSearch,
           }}
         />
         {
-          this.state.showCriteria && <DialogBox actionPressed={this.handlePress} />
+          this.state.showCriteria && <DialogBox title={criteria.title} content={criteria.content} actions={criteria.actions} actionPressed={this.handlePress} />
         }
         {
           this.state.showSearch ? (
@@ -65,7 +64,7 @@ export default class Home extends Component {
           ):(
             <View style={styles.content}>
               <View>
-                <Button onPress={() => this.showSearch()} raised primary text='Search' />
+                <Button style={{container: styles.button}} onPress={() => this.showSearch()} raised primary text='Search' />
                 <Button accent text='Criteria' onPress={()=> this.setState({ showCriteria: true })}/>
               </View>
               <View />
@@ -75,4 +74,10 @@ export default class Home extends Component {
       </View>
     )
   }
+}
+
+const criteria = {
+  title: 'Search by criteria',
+  content: `It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.`,
+  actions: ['got it']
 }

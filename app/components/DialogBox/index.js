@@ -4,12 +4,12 @@ import { View, Text } from 'react-native'
 
 const DialogBox = (props) => {
   return(
-    <View>
+    <View style={{height: '100%', position:'absolute',flex:1, zIndex:2, justifyContent:'center', alignItems:'center'}}>
       <Dialog>
-        <Dialog.Title><Text>Hello world</Text></Dialog.Title>
-        <Dialog.Content><Text>hello from adele</Text></Dialog.Content>
+        <Dialog.Title><Text>{props.title}</Text></Dialog.Title>
+        <Dialog.Content><Text>{props.content}</Text></Dialog.Content>
         <Dialog.Actions>
-          <DialogDefaultActions actions={['got it']} onActionPress={props.actionPressed}/>
+          <DialogDefaultActions actions={props.actions} onActionPress={props.actionPressed}/>
         </Dialog.Actions>
       </Dialog>
     </View>

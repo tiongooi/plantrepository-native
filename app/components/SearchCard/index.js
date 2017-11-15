@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     marginTop: 6,
     marginBottom: 6,
     padding: 10,
+    width: '90%',
   }
 })
 
