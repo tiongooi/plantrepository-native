@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { Toolbar, Card } from 'react-native-material-ui'
 import { updateSearch, queryDatabase } from '../../redux/actions/search'
 import SearchCard from '../SearchCard'
+import styles from './styles'
 
 @connect(store => ({
   searchValue: store.search.value,
@@ -52,22 +53,22 @@ export default class Search extends Component {
     }
 
     return(
-      <View style={{flex:1}}>
+      <View style={styles.container}>
          {
            searchValue.length ? (
-             <View>
+             <View style={styles.innerContainer}>
                {
                  isFetching ? (
                    <Text>Loading....</Text>
                  ):(
-                   <View>
+                   <View style={styles.innerMostContainer}>
                      {
                        !!searchResults[searchValue.charAt(0)] && searchResults[searchValue.charAt(0)].length > 0 && filteredResults.length > 0 ? (
-                         <View>
+                         <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
                            {
                              filteredResults.map((result, index) => <SearchCard result={result} key={index} getPlant={this.handleGetPlant} />)
                            }
-                         </View>
+                         </ScrollView>
                        ):(<Text>not found</Text>)
                      }
                    </View>
