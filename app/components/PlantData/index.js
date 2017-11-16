@@ -42,7 +42,7 @@ export default class PlantData extends Component {
                   </View>
                   <Text style={styles.curatedInfo}>Curated Information: </Text>
                   {
-                    Object.keys(curatedData).map((p, index) => {
+                    Object.keys(curatedData).reverse().map((p, index) => {
                       return <SubContent icon={ icon[match.indexOf(p)] } title={ title[match.indexOf(p)] } content={curatedData[p]} key={index} />
                     })
                   }

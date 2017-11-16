@@ -40,16 +40,20 @@ export default class Plant extends Component {
         <View>
           <BottomNavigation>
             <BottomNavigation.Action
-              key='info'
+              key='plantData'
               label='Info'
-              icon='today'
+              icon='info'
               onPress={() => this.setState({ active: 'plantData' })}
+              active={this.state.active === 'plantData'}
+              // style={{active: { fontSize: 70 }}}
             />
              <BottomNavigation.Action
-               key='image'
+               key='plantImage'
                label='Image'
-               icon='today'
+               icon='camera'
                onPress={() => this.setState({ active: 'plantImage' })}
+               active={this.state.active === 'plantImage'}
+              //  style={{container: { backgroundColor:'red'}}}
              />
           </BottomNavigation>
         </View>

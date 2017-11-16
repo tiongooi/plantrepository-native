@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
   familyContainer: {
     flex: 1,
     flexDirection: 'row',
+    marginTop: 5,
   }
 })
 

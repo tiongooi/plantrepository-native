@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     // padding: 0,
   },
   scrollView: {
-    flex: 1,
+    flex: 2,
   },
 })
 
