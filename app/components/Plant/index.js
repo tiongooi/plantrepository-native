@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { BottomNavigation } from 'react-native-material-ui'
 import { clearPlant } from '../../redux/actions/plant'
@@ -28,25 +28,27 @@ export default class Plant extends Component {
     const { id, botanicalName, commonName, family } = this.props.navigation.state.params.plant
     return(
       <View style={styles.container}>
-        {
-          this.state.active === 'plantData' ? (
-            <PlantData id={id} />
-          ):(
-            <PlantImage queryString={`${botanicalName}`} />
-          )
-        }
+        <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+          {
+            this.state.active === 'plantData' ? (
+              <PlantData id={id} />
+            ):(
+              <PlantImage queryString={`${botanicalName}`} />
+            )
+          }
+        </ScrollView>
         <View>
           <BottomNavigation>
             <BottomNavigation.Action
               key='info'
               label='Info'
-              icon='Today'
+              icon='today'
               onPress={() => this.setState({ active: 'plantData' })}
             />
              <BottomNavigation.Action
                key='image'
                label='Image'
-               icon='Today'
+               icon='today'
                onPress={() => this.setState({ active: 'plantImage' })}
              />
           </BottomNavigation>

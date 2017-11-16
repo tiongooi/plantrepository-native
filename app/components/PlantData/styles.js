@@ -1,29 +1,28 @@
 import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
+  dataContainer: {
+    padding: 10,
+  },
   botanical: {
-    fontFamily: 'roboto-medium',
-    fontSize: 14,
+    fontFamily: 'roboto-light',
+    fontSize: 20,
     lineHeight: 40,
-    // color: '#828282',
   },
   common: {
-    fontFamily: 'roboto-light',
-    // lineHeight: 25,
-    fontSize: 24,
+    fontFamily: 'roboto-medium',
+    fontSize: 38,
+    lineHeight: 65,
     color: '#828282',
   },
   family: {
     fontFamily: 'roboto-medium',
+    // lineHeight: 35,
     marginLeft: 10,
-    color: '#828282',
   },
-  card: {
-    // height: 100,
-    marginTop: 6,
-    marginBottom: 6,
-    padding: 10,
-    // width: '100%',
+  curatedInfo: {
+    marginTop: 40,
+    marginBottom: 20,
   },
   familyContainer: {
     flex: 1,

@@ -3,8 +3,13 @@ import { StyleSheet } from 'react-native'
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: 'center',
-    justifyContent: 'space-between',
+    height: '100%',
+    // flexDirection: 'column-reverse',
+    // backgroundColor:'red',
+    // padding: 0,
+  },
+  scrollView: {
+    flex: 1,
   },
 })
 
