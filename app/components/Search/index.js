@@ -48,7 +48,7 @@ export default class Search extends Component {
   render() {
 
     let filteredResults = []
-    let { handleHideSearch, searchValue, searchResults, isFetching } = this.props
+    let { handleHideSearch, searchValue, searchResults, isFetching, galleryIsOpen } = this.props
     if (!!searchResults[searchValue.charAt(0)]) {
       filteredResults = searchResults[searchValue.charAt(0)].filter(r => this.filterResult(r, searchValue))
     }
@@ -65,7 +65,7 @@ export default class Search extends Component {
                    <View style={styles.innerMostContainer}>
                      {
                        !!searchResults[searchValue.charAt(0)] && searchResults[searchValue.charAt(0)].length > 0 && filteredResults.length > 0 ? (
-                         <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+                         <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false} keyboardDismissMode='on-drag' keyboardShouldPersistTaps='always'>
                            {
                              filteredResults.map((result, index) => <SearchCard result={result} key={index} getPlant={this.handleGetPlant} />)
                            }

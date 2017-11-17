@@ -6,6 +6,8 @@ import {
   GET_PLANT_IMAGE,
   GET_PLANT_IMAGE_SUCCESS,
   GET_PLANT_IMAGE_FAIL,
+  OPEN_GALLERY,
+  CLOSE_GALLERY,
 } from '../actions/plant'
 
 const initialState = {
@@ -13,6 +15,7 @@ const initialState = {
   isFetchingImage: false,
   data: {},
   images: [],
+  galleryIsOpen: false,
 }
 
 const plantReducer = ( state = initialState, action ) => {
@@ -37,6 +40,12 @@ const plantReducer = ( state = initialState, action ) => {
 
     case GET_PLANT_IMAGE_FAIL:
       return { ...state, isFetchingImage: false }
+
+    case OPEN_GALLERY:
+      return { ...state, galleryIsOpen: true }
+
+    case CLOSE_GALLERY:
+      return { ...state, galleryIsOpen: false }
 
     default: return state
   }

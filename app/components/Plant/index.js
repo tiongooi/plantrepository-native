@@ -8,7 +8,7 @@ import PlantData from '../PlantData'
 import styles from './styles'
 
 @connect(store => ({
-  store,
+  galleryIsOpen: store.plant.galleryIsOpen,
 }), {
   clearPlant,
 })
@@ -28,7 +28,7 @@ export default class Plant extends Component {
     const { id, botanicalName, commonName, family } = this.props.navigation.state.params.plant
     return(
       <View style={styles.container}>
-        <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false} contentContainerStyle={{flexGrow:1}}>
+        <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false} contentContainerStyle={{flexGrow:1}} scrollEnabled={!this.props.galleryIsOpen}>
           {
             this.state.active === 'plantData' ? (
               <PlantData id={id} />

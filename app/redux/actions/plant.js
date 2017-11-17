@@ -10,6 +10,9 @@ export const GET_PLANT_IMAGE_FAIL = 'GET_PLANT_IMAGE_FAIL'
 
 export const CLEAR_PLANT = 'CLEAR_PLANT'
 
+export const OPEN_GALLERY = 'OPEN_GALLERY'
+export const CLOSE_GALLERY = 'CLOSE_GALLERY'
+
 export const getData = (id) => dispatch => {
   dispatch({ type: GET_PLANT_DATA })
   database.ref(`plant/${id}`).once('value')
@@ -40,4 +43,12 @@ export const getImage = (queryString) => dispatch => {
 
 export const clearPlant = () => dispatch => {
   dispatch({ type: CLEAR_PLANT })
+}
+
+export const openGallery = () => dispatch => {
+  dispatch({ type: OPEN_GALLERY })
+}
+
+export const closeGallery = () => dispatch => {
+  dispatch({ type: CLOSE_GALLERY })
 }
