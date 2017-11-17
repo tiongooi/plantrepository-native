@@ -5,6 +5,7 @@ import { getImage, openGallery, closeGallery } from '../../redux/actions/plant'
 import PhotoGrid from 'react-native-thumbnail-grid'
 import Gallery from 'react-native-image-gallery'
 import Spinner from '../Spinner'
+import Icon from 'react-native-vector-icons/FontAwesome'
 import styles from './styles'
 
 @connect(store => ({
@@ -51,8 +52,8 @@ export default class PlantImage extends Component {
         {
           this.state.showGallery ? (
             <View style={{height:'100%'}}>
-              <TouchableOpacity onPress={()=> this.closeGallery()}><Text>XXX</Text></TouchableOpacity>
-              <Gallery style={{flex:1, backgroundColor:'black'}} images={images.map(i => Object.assign({}, { source: { uri: i.link } } ))} initialPage={images.map(i => i.link).findIndex(i => i === this.state.imageIndexUri)} />
+              <Gallery style={{backgroundColor:'black', height:'100%', position:'absolute'}} images={images.map(i => Object.assign({}, { source: { uri: i.link } } ))} initialPage={images.map(i => i.link).findIndex(i => i === this.state.imageIndexUri)} />
+              <TouchableOpacity style={{position:'absolute', backgroundColor: 'rgba(255,255,255,0)', alignItems:'center', justifyContent:'center', width:50}} onPress={()=> this.closeGallery()}><Icon name='times' size={40} color='white' /></TouchableOpacity>
             </View>
           ):(
             <View>
