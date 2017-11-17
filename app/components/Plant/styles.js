@@ -5,11 +5,11 @@ const styles = StyleSheet.create({
     flex: 1,
     height: '100%',
     // flexDirection: 'column-reverse',
-    // backgroundColor:'red',
     // padding: 0,
   },
   scrollView: {
-    flex: 2,
+    // flex: 2,
+    // backgroundColor:'red',
   },
 })
 

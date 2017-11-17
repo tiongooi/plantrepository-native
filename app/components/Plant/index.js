@@ -28,7 +28,7 @@ export default class Plant extends Component {
     const { id, botanicalName, commonName, family } = this.props.navigation.state.params.plant
     return(
       <View style={styles.container}>
-        <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+        <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false} contentContainerStyle={{flexGrow:1}}>
           {
             this.state.active === 'plantData' ? (
               <PlantData id={id} />

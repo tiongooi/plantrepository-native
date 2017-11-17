@@ -5,6 +5,7 @@ import { Toolbar, Card } from 'react-native-material-ui'
 import { updateSearch, queryDatabase } from '../../redux/actions/search'
 import SearchCard from '../SearchCard'
 import styles from './styles'
+import Spinner from '../Spinner'
 
 @connect(store => ({
   searchValue: store.search.value,
@@ -21,7 +22,7 @@ export default class Search extends Component {
   }
 
   componentWillUpdate(nextProps) {
-    console.log('component is updated')
+    console.log('component was updated')
     const { searchValue, searchResults, queryDatabase } = nextProps
     if (searchResults[searchValue.charAt(0)]) return
      else {
@@ -59,7 +60,7 @@ export default class Search extends Component {
              <View style={styles.innerContainer}>
                {
                  isFetching ? (
-                   <Text>Loading....</Text>
+                   <Spinner />
                  ):(
                    <View style={styles.innerMostContainer}>
                      {

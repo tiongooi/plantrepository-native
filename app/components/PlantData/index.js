@@ -6,6 +6,7 @@ import SubContent from '../SubContent'
 import { toTitleCase } from '../../helper'
 import styles from './styles'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import Spinner from '../Spinner'
 
 @connect(store => ({
   isFetching: store.plant.isFetching,
@@ -22,14 +23,16 @@ export default class PlantData extends Component {
 
   render() {
     let { commonName, botanicalName, family, curatedData } = this.props.plant
-    let title = ['Additional Information', 'Evergreen/Deciduous', 'Flowering season/color', 'Light', 'Origin', 'Size', 'Soil', 'Drought', 'Frost', 'Flood']
-    let match = ['additionalInfo', 'evergreenDeciduous', 'floweringSeasonOrColor', 'light', 'origin', 'size', 'soil', 'drought', 'frost', 'flooding']
-    let icon = ['plus-square', 'leaf', 'certificate', 'lightbulb-o', 'location-arrow', 'expand', 'thermometer-half', 'shower', 'snowflake-o', 'tint']
+    let title = ['Additional Information', 'Evergreen/Deciduous', 'Flowering season/color', 'Light', 'Origin', 'Size', 'Soil', 'Drought', 'Frost', 'Flood', 'Salt']
+    let match = ['additionalInfo', 'evergreenDeciduous', 'floweringSeasonOrColor', 'light', 'origin', 'size', 'soil', 'drought', 'frost', 'flooding', 'salt']
+    let icon = ['plus-square', 'leaf', 'certificate', 'lightbulb-o', 'location-arrow', 'expand', 'thermometer-half', 'shower', 'snowflake-o', 'tint', 'filter']
     return(
       <View>
         {
           this.props.isFetching ? (
-            <Text>Loading....</Text>
+            <View style={{height: '100%', justifyContent:'center', alignItems:'center'}}>
+              <Spinner />
+            </View>
           ):(
             <View>
               {
