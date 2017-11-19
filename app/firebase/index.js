@@ -1,4 +1,13 @@
 import firebase from 'firebase'
+// import {
+//   FIREBASE_API_KEY,
+//   FIREBASE_AUTH_DOMAIN,
+//   FIREBASE_DATABASE_URL,
+//   FIREBASE_PROJECT_ID,
+//   FIREBASE_STORAGE_BUCKET,
+//   FIREBASE_MESSAGING_SENDER_ID,
+// } from 'react-native-dotenv'
+
 import {
   FIREBASE_API_KEY,
   FIREBASE_AUTH_DOMAIN,
@@ -6,7 +15,7 @@ import {
   FIREBASE_PROJECT_ID,
   FIREBASE_STORAGE_BUCKET,
   FIREBASE_MESSAGING_SENDER_ID,
-} from 'react-native-dotenv'
+} from '../config'
 
 const config = {
     apiKey: FIREBASE_API_KEY,

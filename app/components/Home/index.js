@@ -6,6 +6,7 @@ import { updateSearch } from '../../redux/actions/search'
 import Search from '../Search'
 import styles from './styles'
 import DialogBox from '../DialogBox'
+import Dialogz from '../DialogBox'
 
 @connect(store => ({
   test: store
