@@ -16,6 +16,16 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
+  searchBarMessageContainer: {
+    // flex: 1,
+    flexDirection: 'row',
+    paddingTop: 30,
+    justifyContent: 'center',
+  },
+  searchBarMessage: {
+    marginLeft: 20,
+    color: 'grey',
+  }
 })
 
 export default styles

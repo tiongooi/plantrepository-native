@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import { View, Text, ScrollView } from 'react-native'
 import { connect } from 'react-redux'
 import { Toolbar, Card } from 'react-native-material-ui'
-import { updateSearch, queryDatabase } from '../../redux/actions/search'
+import { updateSearch, queryDatabase, clearSearch } from '../../redux/actions/search'
 import SearchCard from '../SearchCard'
 import styles from './styles'
 import Spinner from '../Spinner'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 @connect(store => ({
   searchValue: store.search.value,
@@ -13,6 +14,7 @@ import Spinner from '../Spinner'
   isFetching: store.search.isFetching,
 }),{
   updateSearch,
+  clearSearch,
   queryDatabase,
 })
 export default class Search extends Component {
@@ -29,6 +31,10 @@ export default class Search extends Component {
       if (searchValue.length === 1) queryDatabase(searchValue, searchResults)
        else return
     }
+  }
+
+  componentWillUnmount() {
+    this.props.clearSearch()
   }
 
   handleUpdateSearch(v) {
@@ -70,13 +76,13 @@ export default class Search extends Component {
                              filteredResults.map((result, index) => <SearchCard result={result} key={index} getPlant={this.handleGetPlant} />)
                            }
                          </ScrollView>
-                       ):(<Text>not found</Text>)
+                       ):(<View style={styles.searchBarMessageContainer}><Icon name='frown-o' color='#FF5733' size={18} /><Text style={styles.searchBarMessage}>Sorry, couldn't find it..</Text></View>)
                      }
                    </View>
                  )
                }
              </View>
-           ):(<Text>nothing in search</Text>)
+           ):(<View style={styles.searchBarMessageContainer}><Icon name='search' size={15} color='#4BAF50' /><Text style={styles.searchBarMessage}>Common name / Botanical name / Family</Text></View>)
          }
       </View>
     )

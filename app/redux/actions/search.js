@@ -1,11 +1,16 @@
 import database from '../../firebase'
 export const UPDATE_SEARCH = 'UPDATE_SEARCH'
+export const CLEAR_SEARCH = 'CLEAR_SEARCH'
 export const QUERY = 'QUERY'
 export const QUERY_SUCCESS = 'QUERY_SUCCESS'
 export const QUERY_FAIL = 'QUERY_FAIL'
 
 export const updateSearch = (v) => dispatch => {
   dispatch({ type: UPDATE_SEARCH, payload: v.trim() })
+}
+
+export const clearSearch = () => dispatch => {
+  dispatch({ type: CLEAR_SEARCH })
 }
 
 export const queryDatabase = (v, searchResults) => dispatch => {

@@ -1,5 +1,6 @@
 import {
   UPDATE_SEARCH,
+  CLEAR_SEARCH,
   QUERY,
   QUERY_SUCCESS,
   QUERY_FAIL,
@@ -24,6 +25,9 @@ const searchReducer = (state = initialState, action) => {
 
     case UPDATE_SEARCH:
       return { ...state, value: action.payload }
+
+    case CLEAR_SEARCH:
+      return { ...state, value: '' }
 
     default: return state
   }
