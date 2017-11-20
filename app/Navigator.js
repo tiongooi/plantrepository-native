@@ -12,6 +12,9 @@ const PlantStack = StackNavigator({
   },
   Plant: {
     screen: Plant,
+    navigationOptions: {
+      drawerLockMode: 'locked-closed',
+    }
   }
 }, {
   headerMode: 'none',
