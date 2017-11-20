@@ -26,7 +26,7 @@ export default class Home extends Component {
   }
 
   showSearch() {
-    this.setState({ showSearch: true })
+    this.setState({ showSearch: true, showCriteria: false })
   }
 
   hideSearch() {
@@ -47,6 +47,7 @@ export default class Home extends Component {
         <Toolbar
           leftElement='menu'
           // centerElement='           Respository'
+          onLeftElementPress={()=> this.props.navigation.navigate('DrawerOpen')}
           isSearchActive={this.state.showSearch}
           searchable={{
             autoFocus: true,
